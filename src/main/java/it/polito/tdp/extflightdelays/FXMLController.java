@@ -36,6 +36,22 @@ public class FXMLController {
     @FXML
     void doAnalizzaAeroporti(ActionEvent event) {
     	//TODO
+    	float inizio=System.nanoTime();
+    	try {
+    	int distanza=Integer.parseInt(distanzaMinima.getText());
+    	String s=model.creaGrafo(distanza); 
+    	txtResult.setText(s);
+    	}
+    	catch(NumberFormatException e) {
+    		txtResult.setText("E' necessario inserire un numero!\n");
+    	}  
+    	float fine=System.nanoTime();
+    	float diff=(float) ((fine-inizio)/1e9);
+    	String tempo=String.valueOf(diff);
+    
+    	txtResult.appendText("\n il tempo impiegato: "+tempo);
+    	
+    
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
